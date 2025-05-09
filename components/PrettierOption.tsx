@@ -15,10 +15,10 @@ interface Props {
 
 export function PrettierOption({ option, value, onChange }: Props) {
   return (
-    <Card className="p-4 h-full min-h-[220px] flex flex-col justify-between">
+    <Card className="p-4 h-full min-h-[1  00px] flex flex-col justify-between">
       <div>
-        <h3 className="font-bold mb-1">{option.name}</h3>
-        <p className="text-sm text-muted-foreground mb-4">
+        <h3 className="font-bold mb-1 text-center">{option.name}</h3>
+        <p className="text-sm text-muted-foreground mb-2 text-center">
           {option.description}
         </p>
       </div>
