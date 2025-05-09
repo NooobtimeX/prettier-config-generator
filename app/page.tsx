@@ -11,7 +11,7 @@ import ThemeChanger from "@/components/ButtonThemeChanger";
 // Type definition based on options array
 type PrettierOptionKey = (typeof options)[number]["key"];
 type SelectedOptions = {
-  [key in PrettierOptionKey]: string | number | boolean | null;
+  [key in PrettierOptionKey]: string | number | boolean | string[] | null;
 };
 
 export default function PrettierConfigPage() {
@@ -25,7 +25,7 @@ export default function PrettierConfigPage() {
 
   const handleChange = (
     key: keyof SelectedOptions,
-    value: string | number | boolean | null
+    value: string | number | boolean | string[]
   ) => {
     setSelected((prev) => ({ ...prev, [key]: value }));
   };
