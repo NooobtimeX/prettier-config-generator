@@ -14,10 +14,11 @@ type SelectedOptions = {
 };
 
 export default function PrettierConfigPage() {
-  const [selected, setSelected] = useState<SelectedOptions>(
-    Object.fromEntries(options.map((opt) => [opt.key, null])) as SelectedOptions
-  );
+  const emptyConfig = Object.fromEntries(
+    options.map((opt) => [opt.key, null])
+  ) as SelectedOptions;
 
+  const [selected, setSelected] = useState<SelectedOptions>(emptyConfig);
   const [showConfig, setShowConfig] = useState(false);
   const [generatedConfig, setGeneratedConfig] = useState("");
 
@@ -34,12 +35,18 @@ export default function PrettierConfigPage() {
     setShowConfig(true);
   };
 
+  const handleReset = () => {
+    setSelected(emptyConfig);
+    setGeneratedConfig("");
+    setShowConfig(false);
+  };
+
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-2 text-yellow-400">
+      <h1 className="text-3xl text-center font-bold mb-2">
         Prettier Config Generator
       </h1>
-      <p className="text-muted-foreground mb-6">
+      <p className="text-muted-foreground mb-2 text-center">
         Select options below to generate your <code>.prettierrc</code>{" "}
         configuration file.
       </p>
@@ -55,9 +62,12 @@ export default function PrettierConfigPage() {
         ))}
       </div>
 
-      <div className="mt-6 flex justify-center">
+      <div className="mt-6 flex justify-center gap-4">
         <Button size="lg" className="text-white" onClick={handleGenerate}>
           Generate Config
+        </Button>
+        <Button size="lg" variant="secondary" onClick={handleReset}>
+          Generate New
         </Button>
       </div>
 
