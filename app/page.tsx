@@ -6,6 +6,7 @@ import { generateConfig } from "@/lib/generateConfig";
 import { Button } from "@/components/ui/button";
 import { PrettierOption } from "@/components/PrettierOption";
 import { GeneratedModal } from "@/components/GeneratedModal";
+import ThemeChanger from "@/components/ButtonThemeChanger";
 
 // Type definition based on options array
 type PrettierOptionKey = (typeof options)[number]["key"];
@@ -43,6 +44,9 @@ export default function PrettierConfigPage() {
 
   return (
     <div>
+      <div className="fixed top-4 right-4 z-50">
+        <ThemeChanger />
+      </div>
       <h1 className="text-3xl text-center font-bold mb-2">
         Prettier Config Generator
       </h1>
@@ -63,7 +67,7 @@ export default function PrettierConfigPage() {
       </div>
 
       <div className="mt-6 flex justify-center gap-4">
-        <Button size="lg" className="text-white" onClick={handleGenerate}>
+        <Button size="lg" variant="default" onClick={handleGenerate}>
           Generate Config
         </Button>
         <Button size="lg" variant="secondary" onClick={handleReset}>
