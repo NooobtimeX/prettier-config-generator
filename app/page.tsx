@@ -7,14 +7,24 @@ import { Button } from "@/components/ui/button";
 import { PrettierOption } from "@/components/PrettierOption";
 import { GeneratedModal } from "@/components/GeneratedModal";
 
+// Type definition based on options array
+type PrettierOptionKey = (typeof options)[number]["key"];
+type SelectedOptions = {
+  [key in PrettierOptionKey]: string | number | boolean | null;
+};
+
 export default function PrettierConfigPage() {
-  const [selected, setSelected] = useState<Record<string, any>>(
-    Object.fromEntries(options.map((opt) => [opt.key, null]))
+  const [selected, setSelected] = useState<SelectedOptions>(
+    Object.fromEntries(options.map((opt) => [opt.key, null])) as SelectedOptions
   );
+
   const [showConfig, setShowConfig] = useState(false);
   const [generatedConfig, setGeneratedConfig] = useState("");
 
-  const handleChange = (key: string, value: any) => {
+  const handleChange = (
+    key: keyof SelectedOptions,
+    value: string | number | boolean | null
+  ) => {
     setSelected((prev) => ({ ...prev, [key]: value }));
   };
 
@@ -24,15 +34,11 @@ export default function PrettierConfigPage() {
     setShowConfig(true);
   };
 
-  const reset = () => {
-    setSelected(Object.fromEntries(options.map((opt) => [opt.key, null])));
-    setGeneratedConfig("");
-    setShowConfig(false);
-  };
-
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-2">Prettier Config Generator</h1>
+      <h1 className="text-3xl font-bold mb-2 text-yellow-400">
+        Prettier Config Generator
+      </h1>
       <p className="text-muted-foreground mb-6">
         Select options below to generate your <code>.prettierrc</code>{" "}
         configuration file.
