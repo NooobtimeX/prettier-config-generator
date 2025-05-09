@@ -2,23 +2,26 @@ import options from "./options";
 
 // Type-safe keys from options
 type OptionKey = (typeof options)[number]["key"];
-type SelectedOptions = {
-  [key in OptionKey]: string | number | boolean | null;
+type OptionValue = string | number | boolean | string[] | null;
+export type SelectedOptions = {
+  [key in OptionKey]: OptionValue;
 };
 
-export const generateConfig = (selected: SelectedOptions): string => {
-  const result: Partial<Record<OptionKey, string | number | boolean>> = {};
+export function generateConfig(selected: SelectedOptions): string {
+  const config: Partial<SelectedOptions> = {};
 
   for (const [key, value] of Object.entries(selected) as [
     OptionKey,
-    string | number | boolean | null,
+    OptionValue,
   ][]) {
-    const meta = options.find((o) => o.key === key);
-    if (value !== null && meta) {
-      result[key] =
-        meta.validate === "integer" ? parseInt(value as string) : value;
+    if (
+      value !== null &&
+      value !== "" &&
+      !(Array.isArray(value) && value.length === 0)
+    ) {
+      config[key] = value;
     }
   }
 
-  return JSON.stringify(result, null, 2);
-};
+  return JSON.stringify(config, null, 2);
+}

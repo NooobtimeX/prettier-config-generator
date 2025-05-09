@@ -121,6 +121,19 @@ const options = [
     options: ["always", "never", "preserve"],
     validate: "string",
   },
+  {
+    name: "Official Plugins",
+    key: "plugins",
+    description: "Select official Prettier plugins to use.",
+    type: "multiselect",
+    options: [
+      "@prettier/plugin-php",
+      "@prettier/plugin-pug",
+      "@prettier/plugin-ruby",
+      "@prettier/plugin-xml",
+    ],
+    validate: "string[]",
+  },
 ];
 
 export default options;
