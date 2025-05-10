@@ -25,6 +25,7 @@ const ThemeChanger = () => {
       variant="outline"
       size="icon"
       className="rounded-full"
+      aria-label="Toggle theme"
     >
       {theme === "dark" ? <Moon size={20} /> : <Sun size={20} />}
     </Button>
