@@ -30,6 +30,7 @@ interface Props {
 export function PrettierOption({ option, value, onChange }: Props) {
   const [open, setOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // detect viewport
   useEffect(() => {
@@ -52,15 +53,17 @@ export function PrettierOption({ option, value, onChange }: Props) {
     );
   };
 
-  // all possible plugins (guaranteed string[] when multiselect)
   const allOptions = Array.isArray(option.options)
     ? (option.options as string[])
     : [];
 
+  const filteredOptions = allOptions.filter((item) =>
+    item.toString().toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
   const selectAll = () => onChange(allOptions);
   const unselectAll = () => onChange([]);
 
-  // only render this if options is a non-empty string[]
   const MultiSelectContent =
     allOptions.length > 0 ? (
       <div className="space-y-4">
@@ -72,8 +75,17 @@ export function PrettierOption({ option, value, onChange }: Props) {
             Unselect All
           </Button>
         </div>
-        <div className="grid grid-cols-1 gap-2">
-          {allOptions.map((item) => {
+
+        <Input
+          type="text"
+          placeholder="Search options..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="w-full"
+        />
+
+        <div className="grid grid-cols-1 gap-2 max-h-[300px] overflow-y-auto">
+          {filteredOptions.map((item) => {
             const isSelected = selectedValues.includes(item);
             return (
               <Button
@@ -87,6 +99,11 @@ export function PrettierOption({ option, value, onChange }: Props) {
               </Button>
             );
           })}
+          {filteredOptions.length === 0 && (
+            <p className="text-sm text-muted-foreground text-center">
+              No matches found
+            </p>
+          )}
         </div>
       </div>
     ) : null;
@@ -100,7 +117,6 @@ export function PrettierOption({ option, value, onChange }: Props) {
         </p>
       </div>
 
-      {/* simple buttons */}
       {option.type === "buttons" && Array.isArray(option.options) ? (
         <div className="flex flex-wrap gap-2">
           {(option.options as (string | boolean)[]).map((o) => (
