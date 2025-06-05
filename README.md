@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prettier Config Generator
 
-## Getting Started
+**Instantly generate a Prettier configuration with full UI support, version-awareness, and modern UX.**
+Built with Next.js, Tailwind CSS, and shadcn/ui.
 
-First, run the development server:
+🔗 **Live Site:** [prettier-config-generator.nooobtimex.me](https://prettier-config-generator.nooobtimex.me)
+
+---
+
+## 🚀 Features
+
+* ✅ Toggle all official Prettier options (as of the latest version)
+* 🧠 Intelligent descriptions & tooltips for each setting
+* 🕹 Real-time config preview (JSON, `.prettierrc`, CLI flags)
+* 🧩 Supports Prettier plugin compatibility
+* 📦 Instant copy-to-clipboard for generated configs
+* 🧪 Built with full type safety and modular architecture
+
+---
+
+## 🛠 Tech Stack
+
+| Layer            | Stack                                                                            |
+| ---------------- | -------------------------------------------------------------------------------- |
+| Framework        | [Next.js 15 (App Router)](https://nextjs.org/docs)                               |
+| Styling          | [Tailwind CSS v4](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com) |
+| Component System | Radix UI Primitives via shadcn                                                   |
+| State Mgmt       | Local state + derived config generation utils                                    |
+| Deployment       | [Vercel](https://vercel.com)                                                     |
+
+---
+
+## 🧩 Local Development
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+# 1. Clone the repo
+git clone https://github.com/your-username/prettier-config-generator.git
+cd prettier-config-generator
+
+# 2. Install dependencies
+pnpm install
+
+# 3. Run the app
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+> Requires Node.js 18+ and pnpm.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🧠 Architecture Notes
 
-## Learn More
+* Config option metadata is fully typed and version-controlled.
+* Each Prettier option is encapsulated with:
 
-To learn more about Next.js, take a look at the following resources:
+  * Key
+  * Type (`boolean` | `string` | `enum`)
+  * Default value
+  * CLI flag format
+  * Prettier version availability
+* Generators produce outputs for `.prettierrc`, CLI args, and JSON.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📂 Project Structure
 
-## Deploy on Vercel
+```bash
+/
+├─ components/        # UI Components
+├─ lib/               # Config generators and utils
+├─ data/              # Option metadata (typed)
+├─ app/               # Next.js App Router
+├─ public/            # Assets and Open Graph images
+├─ types/             # Global TypeScript types
+└─ README.md
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Contributing
+
+Pull requests and feedback are welcome. Please follow the established coding standards and submit issues for any bugs or feature requests.
+
+---
+
+## 📄 License
+
+MIT License. See [LICENSE](./LICENSE) for details.
+
+---
+
+## 🧑‍💻 Author
+
+**Wongsaphat "Kwan" Puangsorn**
+[GitHub](https://github.com/nooobtimex) · [LinkedIn](https://www.linkedin.com/in/wongsaphat-puangsorn)
+
+---
+
+Let me know if you want the README translated into Thai or if you'd like badges (e.g., Vercel deploy, license, etc.) added.
