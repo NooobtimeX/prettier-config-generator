@@ -62,21 +62,6 @@ pnpm dev
 
 ---
 
-## 📂 Project Structure
-
-```bash
-/
-├─ components/        # UI Components
-├─ lib/               # Config generators and utils
-├─ data/              # Option metadata (typed)
-├─ app/               # Next.js App Router
-├─ public/            # Assets and Open Graph images
-├─ types/             # Global TypeScript types
-└─ README.md
-```
-
----
-
 ## 🤝 Contributing
 
 Pull requests and feedback are welcome. Please follow the established coding standards and submit issues for any bugs or feature requests.
