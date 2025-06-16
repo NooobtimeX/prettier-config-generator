@@ -81,5 +81,3 @@ MIT License. See [LICENSE](./LICENSE) for details.
 [GitHub](https://github.com/nooobtimex) · [LinkedIn](https://www.linkedin.com/in/wongsaphat-puangsorn)
 
 ---
-
-Let me know if you want the README translated into Thai or if you'd like badges (e.g., Vercel deploy, license, etc.) added.
