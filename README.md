@@ -9,12 +9,12 @@ Built with Next.js, Tailwind CSS, and shadcn/ui.
 
 ## 🚀 Features
 
-* ✅ Toggle all official Prettier options (as of the latest version)
-* 🧠 Intelligent descriptions & tooltips for each setting
-* 🕹 Real-time config preview (JSON, `.prettierrc`, CLI flags)
-* 🧩 Supports Prettier plugin compatibility
-* 📦 Instant copy-to-clipboard for generated configs
-* 🧪 Built with full type safety and modular architecture
+- ✅ Toggle all official Prettier options (as of the latest version)
+- 🧠 Intelligent descriptions & tooltips for each setting
+- 🕹 Real-time config preview (JSON, `.prettierrc`, CLI flags)
+- 🧩 Supports Prettier plugin compatibility
+- 📦 Instant copy-to-clipboard for generated configs
+- 🧪 Built with full type safety and modular architecture
 
 ---
 
@@ -50,15 +50,16 @@ pnpm dev
 
 ## 🧠 Architecture Notes
 
-* Config option metadata is fully typed and version-controlled.
-* Each Prettier option is encapsulated with:
+- Config option metadata is fully typed and version-controlled.
+- Each Prettier option is encapsulated with:
 
-  * Key
-  * Type (`boolean` | `string` | `enum`)
-  * Default value
-  * CLI flag format
-  * Prettier version availability
-* Generators produce outputs for `.prettierrc`, CLI args, and JSON.
+  - Key
+  - Type (`boolean` | `string` | `enum`)
+  - Default value
+  - CLI flag format
+  - Prettier version availability
+
+- Generators produce outputs for `.prettierrc`, CLI args, and JSON.
 
 ---
 
